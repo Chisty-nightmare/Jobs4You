@@ -1,0 +1,135 @@
+﻿@model IEnumerable<Jobs4You.Models.ApplyJob>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+
+    @if (Session["user_type"] == "Admin")
+    {
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Freelancer.freelancer_username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.job.details)
+            </th>
+            <th></th>
+        </tr>
+    }
+
+    @foreach (var item in Model)
+    {
+
+        if (User.Identity.IsAuthenticated)
+        {
+
+            if (item.freelancerID == (int)Session["id"])
+            {
+
+
+
+                @*<tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Freelancer.freelancer_username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.job.details)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.applyToken }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.applyToken }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.applyToken })
+                        </td>
+                    </tr>*@
+
+
+
+                <section class="jobslist">
+                    <div class="col-md-3">
+                        <div class="card cardHover p-2">
+                            @*<div class="text-right"> <small>Full Time</small> </div>*@
+                            <br><br>
+                            <div class="text-center"> @Html.DisplayFor(modelItem => item.job.details)</div>
+                            <div class="text-center mt-2 p-3">
+                                <span> @Html.DisplayFor(modelItem => item.Freelancer.freelancer_username)</span><hr>
+                                <div>
+                                    <button class="btn btnHover" style="display:initial;height:34px;">@Html.ActionLink("Delete", "Delete", new { id = item.applyToken })</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <br><br>
+                    </div>
+                </section>
+
+            }
+            else if (Session["user_type"] == "Admin")
+            {
+
+
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Freelancer.freelancer_username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.job.details)
+                    </td>
+                    <td>
+                        @if (Session["user_type"] == "Client")
+                        {
+                            @Html.ActionLink("Confirm", "Confirm", new { id = item.applyToken })
+                        }
+                        @Html.ActionLink("Edit", "Edit", new { id = item.applyToken }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.applyToken }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.applyToken })
+                    </td>
+                </tr>
+
+            }
+            else if (Session["user_type"] == "Client")
+            {
+
+
+                <section class="jobslist">
+                    <div class="col-md-3">
+                        <div class="card cardHover p-2">
+                            @*<div class="text-right"> <small>Full Time</small> </div>*@
+                            <br><br>
+                                <div class="text-center">@Html.DisplayFor(modelItem => item.job.details)</div>
+                            <div class="text-center mt-2 p-3">
+                                <span>Applicant : @Html.DisplayFor(modelItem => item.Freelancer.freelancer_username)</span><hr>
+                                @*<div class="d-flex flex-row align-items-center justify-content-center"> <small class="ml-1">By @Html.DisplayFor(modelItem => item.Client.client_username) </small> </div>*@
+
+                                <div class="d-flex justify-content-between mt-3">
+                                    <button class="btn btnHover">@Html.ActionLink("Confirm", "Confirm", new { id = item.applyToken })</button>
+                                    <button class="btn btnHover">@Html.ActionLink("Delete", "Delete", new { id = item.applyToken })</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <br><br>
+                    </div>
+                </section>
+
+
+            }
+
+
+
+
+
+        }
+
+    }
+
+</table>

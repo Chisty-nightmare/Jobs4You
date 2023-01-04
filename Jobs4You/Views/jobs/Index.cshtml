@@ -1,0 +1,159 @@
+﻿@model IEnumerable<Jobs4You.Models.job>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Session["user_type"] == "Client")
+{
+    <div class="create_new">
+        <p class="text-center clientjoblist">
+            <button class="btn"> @Html.ActionLink("Create New", "Create") </button>
+        </p>
+    </div>
+    }
+    <table class="table">
+        @if (Session["user_type"] == "Admin")
+        {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.pricing)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.details)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.duration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Client.client_username)
+                </th>
+                <th></th>
+            </tr>
+        }
+        <br>
+        <br>
+        @foreach (var item in Model)
+        {
+
+
+
+
+            if (User.Identity.IsAuthenticated)
+            {
+
+                if (item.clientID == (int)Session["id"])
+                {
+
+                    @*<tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.pricing)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.details)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.duration)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Client.client_username)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.jobID }) |
+
+                                @Html.ActionLink("Details", "Details", new { id = item.jobID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.jobID })
+                            </td>
+                        </tr>*@
+
+                    <section class="jobslist">
+                        <div class="col-md-3">
+                            <div class="card cardHover p-2">
+                                @*<div class="text-right"> <small>Full Time</small> </div>*@
+                                <br><br>
+                                <div class="text-center">@Html.DisplayFor(modelItem => item.details)</div>
+                                <div class="text-center mt-2 p-3">
+                                    <hr> <span>BDT @Html.DisplayFor(modelItem => item.pricing) /-</span>
+                                    <div class="d-flex flex-row align-items-center justify-content-center"> <small class="ml-1">By @Html.DisplayFor(modelItem => item.Client.client_username) </small> </div>
+                                    <div><span> @Html.DisplayFor(modelItem => item.duration) hrs</span></div>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <button class="btn btnHover">@Html.ActionLink("Edit details", "Edit", new { id = item.jobID })</button>
+                                        <button class="btn btnHover">@Html.ActionLink("Delete", "Delete", new { id = item.jobID })</button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <br><br>
+                        </div>
+                    </section>
+
+                }
+
+                else if (Session["user_type"] == "Admin")
+                {
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pricing)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.details)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.duration)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Client.client_username)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.jobID }) |
+
+                            @if (Session["user_type"] == "Freelancer")
+                            {
+
+                                @Html.ActionLink("Apply", "Apply", new { id = item.jobID })
+                            }
+                            |
+                            @Html.ActionLink("Details", "Details", new { id = item.jobID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.jobID })
+                        </td>
+                    </tr>
+
+                }
+
+                else if (Session["user_type"] == "Freelancer")
+                {
+
+                    <section class="jobslist">
+                        <div class="col-md-3">
+                            <div class="card cardHover p-2">
+                                @*<div class="text-right"> <small>Full Time</small> </div>*@
+                                <br><br>
+                                <div class="text-center">@Html.DisplayFor(modelItem => item.details)</div>
+                                <div class="text-center mt-2 p-3">
+                                    <hr> <span>BDT @Html.DisplayFor(modelItem => item.pricing) /-</span>
+                                    <div class="d-flex flex-row align-items-center justify-content-center"> <small class="ml-1">By @Html.DisplayFor(modelItem => item.Client.client_username) </small> </div>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <span> @Html.DisplayFor(modelItem => item.duration) hrs</span>
+                                        <button class="btn btnHover">@Html.ActionLink("Apply", "Apply", new { id = item.jobID })</button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <br><br>
+                        </div>
+                    </section>
+
+
+                }
+
+
+
+
+            }
+        }
+
+    </table>

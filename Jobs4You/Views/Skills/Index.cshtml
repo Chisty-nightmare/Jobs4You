@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Jobs4You.Models.Skill>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add Skill", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.skills)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Freelancer.freelancer_username)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        if (User.Identity.IsAuthenticated)
+        {
+
+            if (item.freelancerID == (int)Session["id"])
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.skills)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Freelancer.freelancer_username)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.skillID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.skillID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.skillID })
+                    </td>
+                </tr>
+
+
+
+
+
+            }
+            else if (Session["user_type"] == "Admin")
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.skills)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Freelancer.freelancer_username)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.skillID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.skillID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.skillID })
+                    </td>
+                </tr>
+
+
+            }
+            else if (Session["user_type"] == "Client")
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.skills)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Freelancer.freelancer_username)
+                    </td>
+                    <td>
+                       
+                        @Html.ActionLink("Details", "Details", new { id = item.skillID }) 
+                       
+                    </td>
+                </tr>
+
+
+            }
+
+
+        }
+
+    }
+
+</table>

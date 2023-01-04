@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4da2888ac07444f4ab99691e821b2aa6" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="Jobs4youModel.ApplyJob" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Jobs4youModel.Client" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Jobs4youModel.Freelancer" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Jobs4youModel.Hire" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Jobs4youModel.Invoice" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Jobs4youModel.job" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Jobs4youModel.Payment" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Jobs4youModel.Skill" Width="1.5" PointX="2.875" PointY="12.25" IsExpanded="true" />
+        <AssociationConnector Association="Jobs4youModel.FK__ApplyJobs__freel__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="Jobs4youModel.FK__ApplyJobs__jobID__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="Jobs4youModel.FK__Hires__clientID__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="Jobs4youModel.FK__jobs__clientID__1367E606" ManuallyRouted="false" />
+        <AssociationConnector Association="Jobs4youModel.FK__Payment__clientI__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="Jobs4youModel.FK__Hires__freelance__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="Jobs4youModel.FK__Payment__freelan__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="Jobs4youModel.FK__Skills__freelanc__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="Jobs4youModel.FK__Invoice__payment__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="Jobs4youModel.FK__Payment__jobID__1DE57479" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Jobs4youModel.Admin" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Jobs4youModel.Rating" Width="1.5" PointX="8.25" PointY="9" />
+        <AssociationConnector Association="Jobs4youModel.FK__Rating__paymentI__398D8EEE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

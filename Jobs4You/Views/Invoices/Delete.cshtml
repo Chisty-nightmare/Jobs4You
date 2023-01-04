@@ -1,0 +1,48 @@
+﻿@model Jobs4You.Models.Invoice
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pricing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pricing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment.paymentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment.paymentID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

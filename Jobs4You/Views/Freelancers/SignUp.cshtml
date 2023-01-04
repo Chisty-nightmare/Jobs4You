@@ -1,0 +1,173 @@
+﻿@model Jobs4You.Models.Freelancer
+
+@{
+    ViewBag.Title = "SignUp";
+}
+
+@*<h2>SignUp</h2>*@
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @*<div class="form-horizontal">
+        <h4>Freelancer</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.freelancer_username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.freelancer_username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.freelancer_username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.freelancer_pass, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.freelancer_pass, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.freelancer_pass, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.freelancer_phone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.freelancer_phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.freelancer_phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.freelancer_stat, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.freelancer_stat, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.freelancer_stat, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.freelancer_rating, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.freelancer_rating, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.freelancer_rating, "", new { @class = "text-danger" })
+                </div>
+            </div> * ekhane '@' chilo
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.freelancer_mail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.freelancer_mail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.freelancer_mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.freelancer_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.freelancer_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.freelancer_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sign Up" class="btn btn-default" />
+            </div>
+        </div>
+    </div>*@
+
+
+
+
+
+
+
+
+
+
+
+    <section class="login">
+
+        <div class="limiter">
+            <div class="container-login100">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="wrap-login100">
+                    <div class="login100-form-title">
+                        <span class="login100-form-title-1">
+                            Sign Up (Freelancer)
+                        </span>
+                    </div>
+
+                    <form class="login100-form validate-form">
+                        <br>
+
+                        <!-- name -->
+                        <div class="wrap-input100 validate-input m-b-26" data-validate="Name is required">
+                            @Html.EditorFor(model => model.freelancer_name, new { htmlAttributes = new { @class = "input100", placeholder = "Enter Name" } })
+                            @Html.ValidationMessageFor(model => model.freelancer_name, "", new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <!-- username -->
+                        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                            @Html.EditorFor(model => model.freelancer_username, new { htmlAttributes = new { @class = "input100", placeholder = "Enter Username" } })
+                            @Html.ValidationMessageFor(model => model.freelancer_username, "", new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <!-- mail -->
+                        <div class="wrap-input100 validate-input m-b-26" data-validate="E-mail is required">
+                            @Html.EditorFor(model => model.freelancer_mail, new { htmlAttributes = new { @class = "input100", placeholder = "Enter E-mail" } })
+                            @Html.ValidationMessageFor(model => model.freelancer_mail, "", new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <!-- pass -->
+                        <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                            @Html.EditorFor(model => model.freelancer_pass, new { htmlAttributes = new { @class = "input100",placeholder = "Enter Password" } })
+                            @Html.ValidationMessageFor(model => model.freelancer_pass, "", new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <!-- phone -->
+                        <div class="wrap-input100 validate-input m-b-26" data-validate="Phone is required">
+                            @Html.EditorFor(model => model.freelancer_phone, new { htmlAttributes = new { @class = "input100", placeholder = "Enter Phone" } })
+                            @Html.ValidationMessageFor(model => model.freelancer_phone, "", new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+
+
+
+
+                        <div class="container-login100-form-btn">
+                            <input type="submit" value="Signup" class="login100-form-btn" />
+                            <button class="signup100-form-btn">
+                                <a href="@Url.Action("Login","Freelancers")" role="button">Login</a>
+                            </button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

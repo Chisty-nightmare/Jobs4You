@@ -1,0 +1,158 @@
+/*html {
+    font-size: 66%;
+}
+
+.buttonH {
+    display: inline-block;
+    padding: 8px 25px;
+    border-radius: 4px;
+}
+
+.button-primaryH {
+    position: relative;
+    background-color: #c0ca33;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    transition: color 0.3s ease-in;
+    z-index: 1;
+}
+
+    .button-primaryH:hover {
+        color: #c0ca33;
+        text-decoration: none;
+    }
+
+    .button-primaryH::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        background-color: #fff;
+        border-radius: 4px;
+        opacity: 0;
+        -webkit-transform: scaleX(0.8);
+        -ms-transform: scaleX(0.8);
+        transform: scaleX(0.8);
+        transition: all 0.3s ease-in;
+        z-index: -1;
+    }
+
+    .button-primaryH:hover::after {
+        opacity: 1;
+        -webkit-transform: scaleX(1);
+        -ms-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+
+.overlayH::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.header-areaH {
+    position: relative;
+    height: 300px;
+    background: #5bc0de;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+}
+
+.bannerH {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+}
+
+    .bannerH h1 {
+        font-weight: 800;
+        margin-bottom: 0.5em;
+        font-size: 3.6rem;
+    }
+
+    .bannerH p {
+        font-weight: 700;
+        margin-bottom: 0.5em;
+        font-size: 1.6rem;
+        line-height: 1.6;
+    }
+
+.content {
+    padding: 120px 0;
+}
+
+@media screen and (min-width: 767px) {
+    .bannerH {
+        padding: 0 150px;
+    }
+
+        .bannerH h1 {
+            font-size: 5rem;
+        }
+
+        .bannerH p {
+            font-size: 2rem;
+        }
+}
+*/
+
+.body {
+    font-family: 'Lato';
+}
+
+.container {
+border-radius:0px;
+}
+
+
+.loginButton {
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 350px;
+    border: 0px;
+    width: 100px;
+    margin-left: 1.5rem;
+}
+
+.navbar {
+    height: 80px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+    margin-bottom: 0px !important;
+    border-radius: 0px;
+}
+
+.navslide {
+    margin: 0 0 0 1.5rem;
+}
+
+.navbar-toggler {
+    border: none;
+}
+.navbar-brand {
+padding: 0px !important;
+}
+
+/*770-990*/
+@media only screen and (min-width: 500px) and (max-width: 990px) {
+    .vis {
+        display: none;
+    }
+}
+
+
+
+
+

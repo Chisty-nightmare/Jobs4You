@@ -1,0 +1,50 @@
+﻿@model Jobs4You.Models.job
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>job</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pricing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pricing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.client_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.client_username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.jobID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

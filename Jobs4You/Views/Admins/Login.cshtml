@@ -1,0 +1,97 @@
+﻿@model Jobs4You.Models.Admin
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@*<h2>Login</h2>*@
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @*<div class="form-horizontal">
+            <h4>Admin</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.admin_mail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.admin_mail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.admin_mail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.admin_pass, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.admin_pass, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.admin_pass, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Login" class="btn btn-default" />
+                    <a href="@Url.Action("SignUp","Admins")" class="btn btn-default" role="button">Sign Up</a>
+                </div>
+            </div>
+        </div>*@
+
+
+
+
+
+
+    <section class="login">
+        <div class="limiter">
+            <div class="container-login100">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="wrap-login100">
+                    <div class="login100-form-title">
+                        <span class="login100-form-title-1">
+                            Log In (Admin)
+                        </span>
+                    </div>
+
+                    <form class="login100-form validate-form">
+                        <br>
+
+                        <div class="wrap-input100 validate-input m-b-26" data-validate="E-mail is required">
+                            @Html.EditorFor(model => model.admin_mail, new { htmlAttributes = new { @class = "input100", placeholder = "Enter Email" } })
+                            @Html.ValidationMessageFor(model => model.admin_mail, "", new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                            @Html.EditorFor(model => model.admin_pass, new { htmlAttributes = new { @class = "input100", placeholder = "Enter Password" } })
+                            @Html.ValidationMessageFor(model => model.admin_pass, "", new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <input type="submit" value="Login" class="login100-form-btn" />
+                            <button class="signup100-form-btn">
+                                <a href="@Url.Action("SignUp","Admins")" role="button">Sign Up</a>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

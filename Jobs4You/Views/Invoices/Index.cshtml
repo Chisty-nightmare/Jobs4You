@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Jobs4You.Models.Invoice>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Your Payments</h2>
+
+<p>
+    @Html.ActionLink("Pending Payments", "index", "payments")
+</p>
+<table class="table">
+
+    @if (Session["user_type"] == "Admin") { 
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.pricing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.details)
+            </th>
+            @* <th>
+                    @Html.DisplayNameFor(model => model.Payment.paymentID)
+                </th>*@
+            <th></th>
+        </tr>}
+
+    @foreach (var item in Model)
+    {
+        @*<tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pricing)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.details)
+                </td>
+                @* <td>
+                        @Html.DisplayFor(modelItem => item.Payment.paymentID)
+                    </td> *ekhane @ chilo
+                <td>
+                    @if (Session["user_type"] == "Client")
+                    {
+                        @Html.ActionLink("Verify Pay", "Edit", new { id = item.invoiceID })}
+
+                    @if (Session["user_type"] == "Freelancer")
+                    {
+                        @Html.ActionLink("Verify Receception", "received", new { id = item.invoiceID })}
+
+                    | @Html.ActionLink("Details", "Details", new { id = item.invoiceID })
+
+                    @* @Html.ActionLink("Delete", "Delete", new { id=item.invoiceID }) *ekhane @ chilo
+                </td>
+            </tr>*@
+
+
+
+        <section class="jobslist">
+            <div class="col-md-3">
+                <div class="card cardHover p-2">
+                    @*<div class="text-right"> <small>Full Time</small> </div>*@
+                    <br><br>
+                    <div class="text-center">@Html.DisplayFor(modelItem => item.details)</div>
+                    <div class="text-center mt-2 p-3">
+                        <span>BDT @Html.DisplayFor(modelItem => item.pricing) /-</span><hr>
+                        @*<div class="d-flex flex-row align-items-center justify-content-center"> <small class="ml-1">By @Html.DisplayFor(modelItem => item.Client.client_username) </small> </div>*@
+
+                        <div class="d-flex justify-content-between mt-3">
+                            @if (Session["user_type"] == "Client")
+                            {
+                                <button class="btn btnHover">@Html.ActionLink("Verify Pay", "Edit", new { id = item.invoiceID })</button>
+                            }
+                            else if (Session["user_type"] == "Freelancer")
+                            {
+                                <button class="btn btnHover">@Html.ActionLink("Verify Receception", "received", new { id = item.invoiceID })</button>
+                            }
+                            <button class="btn btnHover">@Html.ActionLink("Details", "Details", new { id = item.invoiceID })</button>
+                        </div>
+                    </div>
+
+
+                </div>
+                <br><br>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+    }
+
+</table>

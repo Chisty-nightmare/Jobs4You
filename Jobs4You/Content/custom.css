@@ -1,0 +1,869 @@
+/********** common setting **********/
+h2 {
+    font-size: 2.8rem !important;
+    font-weight: 700;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+.jumbotron {
+    margin-bottom: 0 !important;
+}
+
+.atlas-cta {
+    border-radius: 22px !important;
+    padding: 12px 30px !important;
+    font-weight: 700;
+    transition: .3s ease-in-out !important;
+}
+
+.atlas-cta:hover {
+    text-decoration: none;
+    transform: translateY(-5px);
+}
+
+.atlas-cta-wide {
+    width: 100%;
+}
+
+.cta-green {
+    background: #00FFAD;
+    color: #192440;
+}
+
+.cta-green:hover {
+    color: #ffffff;
+    background: #00e69c;
+}
+
+.cta-blue {
+    background: #192440;
+    color: #ffffff;
+}
+
+.cta-blue:hover {
+    color: #ffffff;
+    background: #121a2e;
+}
+
+.cta-ghost {
+    border: 2px solid #192440 !important;
+    color: #192440;
+}
+
+.cta-ghost:hover {
+    color: #ffffff;
+    background: #121a2e;
+}
+
+#banner {
+    background-size: cover;
+    background-image: url('images/banner-bk.jpg') ;
+}
+
+/********** banner **********/
+#banner header {
+    overflow: hidden;
+}
+
+#banner header img {
+    max-width: 80px;
+}
+
+/********** feature (skew background) **********/
+.feature img {
+    width: 100%;
+    max-width: 480px;
+}
+
+#feature-first {
+    background: linear-gradient(168deg, #ffffff 55%, #00FFAD 0);
+}
+
+#feature-last {
+    background: #00FFAD;
+}
+
+/********** price table **********/
+#price-table {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+}
+
+#price-table__premium {
+    background: #192440;
+    color: #ffffff;
+}
+
+#price-table ul li {
+    padding: 5px 0;
+}
+
+/********** contact **********/
+#contact {
+    background-size: cover;
+    background-image: url('images/contact-bk.jpg');
+}
+
+#contact ul li {
+    padding: 3px 0;
+}
+
+#contact form {
+    color: #00FFAD;
+}
+
+#contact form input,
+#contact form textarea {
+    background: transparent;
+    border: 1px solid #00FFAD;
+    color: #ffffff;
+}
+
+/********** copyright **********/
+#copyright {
+    background: #192440;
+    padding: 2rem 3rem;
+}
+
+#copyright #social-media a {
+    width: 40px;
+    height: 40px;
+    border-radius: 99%;
+    background: #ffffff;
+    transition: .4s ease;
+}
+
+#copyright #social-media a i {
+    color: #192440;
+    font-size: 1.2rem;
+    line-height: 40px;
+}
+
+#copyright #social-media a:hover {
+    background: #00FFAD;
+}
+
+#copyright #social-media a:hover i {
+    color: #ffffff;
+}
+
+/********** RWD **********/
+@media (max-width: 575px) {
+    #banner h1 {
+        font-size: 3.6rem;
+    }
+}
+
+/*@media (min-width: 1200px){
+    #container-body {
+        width: 1903px !important;
+    }
+    .body-content {
+
+        padding: 0 !important;
+    }
+}*/
+
+.form-horizontal .form-group {
+    margin-right: 0px !important;
+}
+
+
+
+
+/*   About section    */
+.teampage {
+    margin: 6rem 0 9rem 0;
+}
+
+
+
+    .teampage .row {
+        margin: 0;
+    }
+
+    .teampage .card {
+        border: none;
+        box-shadow: 0 4px 4px 0px rgba(0,0,0,.1);
+    }
+
+    .teampage .col {
+        margin: 1rem;
+    }
+
+    .teampage .teamtitle p {
+        margin-bottom: 3rem;
+    }
+
+
+.socialBtn {
+    border-radius: 39px;
+    width: 39px;
+    height: 39px;
+    vertical-align: middle;
+}
+
+.crPart {
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-left: -.5rem;
+}
+
+
+
+
+.teampage .socialBtn {
+    border-radius: 41px;
+    width: 37px;
+    height: 37px;
+    vertical-align: middle;
+    background-color: rgb(103, 131, 209);
+}
+/*   About section    */
+
+
+/*  ======================================== login ============================================= */
+
+
+
+.login a {
+    font-family: var(--bs-font-sans-serif);
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666666;
+    margin: 0px;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+}
+
+.login a:focus {
+    outline: none !important;
+}
+
+.login a:hover {
+    text-decoration: none;
+    color: #57b846;
+}
+
+/*---------------------------------------------*/
+.login h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+}
+
+.login p {
+    font-family: var(--bs-font-sans-serif);
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666666;
+    margin: 0px;
+}
+
+.login ul, li {
+    margin: 0px;
+    list-style-type: none;
+}
+
+
+/*---------------------------------------------*/
+.login input {
+    outline: none;
+    border: none;
+}
+
+.login input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+        .login input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+.login textarea {
+    outline: none;
+    border: none;
+}
+
+.login textarea:focus, input:focus {
+    border-color: transparent !important;
+}
+
+.login input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.login input:focus:-moz-placeholder {
+    color: transparent;
+}
+
+.login input:focus::-moz-placeholder {
+    color: transparent;
+}
+
+.login input:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+.login textarea:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.login textarea:focus:-moz-placeholder {
+    color: transparent;
+}
+
+.login textarea:focus::-moz-placeholder {
+    color: transparent;
+}
+
+.login textarea:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+.login input::-webkit-input-placeholder {
+    color: #999999;
+}
+
+.login input:-moz-placeholder {
+    color: #999999;
+}
+
+.login input::-moz-placeholder {
+    color: #999999;
+}
+
+.login input:-ms-input-placeholder {
+    color: #999999;
+}
+
+.login textarea::-webkit-input-placeholder {
+    color: #999999;
+}
+
+.login textarea:-moz-placeholder {
+    color: #999999;
+}
+
+.login textarea::-moz-placeholder {
+    color: #999999;
+}
+
+.login textarea:-ms-input-placeholder {
+    color: #999999;
+}
+
+.login label {
+    display: block;
+    margin: 0;
+}
+
+/*---------------------------------------------*/
+.login button {
+    outline: none !important;
+    border: none;
+    background: transparent;
+}
+
+.login button:hover {
+    cursor: pointer;
+}
+
+.login iframe {
+    border: none !important;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ Utility ]*/
+.login .txt1 {
+    font-family: var(--bs-font-sans-serif);
+    font-size: 13px;
+    line-height: 1.4;
+    color: #999999;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ login ]*/
+
+.login .limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.login .container-login100 {
+    width: 100%;
+    min-height: 84vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #fafdf9;
+}
+
+
+.login .wrap-login100 {
+    width: 670px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+/*==================================================================
+[ Title form ]*/
+.login .login100-form-title {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 70px 15px 74px 15px;
+    background-image: url("images/bg-01.jpg");
+}
+
+.login .login100-form-title-1 {
+    font-family: var(--bs-font-sans-serif);
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.login .login100-form-title::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(54,84,99,0.7);
+}
+
+
+/*==================================================================
+[ Form ]*/
+
+.login .login100-form {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 43px 88px 93px 190px;
+}
+
+
+/*------------------------------------------------------------------
+[ Input ]*/
+
+.login .wrap-input100 {
+    margin: 0 15rem;
+    position: relative;
+    border-bottom: 1px solid #b2b2b2;
+}
+
+.login .label-input100 {
+    font-family: var(--bs-font-sans-serif);
+    font-size: 15px;
+    color: #808080;
+    line-height: 1.2;
+    text-align: right;
+    position: absolute;
+    top: 14px;
+    left: -105px;
+    width: 80px;
+}
+
+/*---------------------------------------------*/
+.login .input100 {
+    font-family: var(--bs-font-sans-serif);
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+    background: transparent;
+    padding: 0 5px;
+}
+
+.login .focus-input100 {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.login .focus-input100::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    transition: all 0.6s;
+    background: #57b846;
+}
+
+
+/*---------------------------------------------*/
+.login input.input100 {
+    height: 45px;
+}
+
+
+.login .input100:focus + .focus-input100::before {
+    width: 100%;
+}
+
+.login .has-val.input100 + .focus-input100::before {
+    width: 100%;
+}
+
+/*==================================================================
+[ Restyle Checkbox ]*/
+
+.login .input-checkbox100 {
+    display: none;
+}
+
+.login .label-checkbox100 {
+    font-family: var(--bs-font-sans-serif);
+    font-size: 13px;
+    color: #999999;
+    line-height: 1.4;
+    display: block;
+    position: relative;
+    padding-left: 26px;
+    cursor: pointer;
+}
+
+.login .label-checkbox100::before {
+    content: "\f00c";
+    font-family: FontAwesome;
+    font-size: 13px;
+    color: transparent;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.login .input-checkbox100:checked + .label-checkbox100::before {
+    color: #57b846;
+}
+
+/*------------------------------------------------------------------
+[ Button ]*/
+.login .container-login100-form-btn {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 50%;
+
+}
+
+.login .login100-form-btn {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 160px;
+    height: 46px;
+    background-color: #00FFAD;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #000000;
+    line-height: 1.2;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    margin: 2rem 0;
+}
+
+.login .signup100-form-btn {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 160px;
+    height: 46px;
+    background-color: #e5e5e5;
+    border-radius: 25px;
+    font-size: 16px;
+    margin-left :.5rem;
+
+}
+
+.login .login100-form-btn:hover {
+    background-color: #00cc8a;
+}
+
+.login .signup100-form-btn:hover {
+    background-color: #bcbcbc;
+}
+
+
+/*------------------------------------------------------------------
+[ Responsive ]*/
+
+@media (max-width: 576px) {
+    .login .login100-form {
+        padding: 43px 15px 57px 117px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login .login100-form {
+        padding: 43px 15px 57px 15px;
+    }
+
+    .login .label-input100 {
+        text-align: left;
+        position: unset;
+        top: unset;
+        left: unset;
+        width: 100%;
+        padding: 0 5px;
+    }
+}
+
+
+/*------------------------------------------------------------------
+[ Alert validate ]*/
+
+.validate-input {
+    position: relative;
+}
+
+.alert-validate::before {
+    content: attr(data-validate);
+    position: absolute;
+    max-width: 70%;
+    background-color: #fff;
+    border: 1px solid #c80000;
+    border-radius: 2px;
+    padding: 4px 25px 4px 10px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 2px;
+    pointer-events: none;
+    font-family: var(--bs-font-sans-serif);
+    color: #c80000;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: left;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: opacity 0.4s;
+    -o-transition: opacity 0.4s;
+    -moz-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+}
+
+.alert-validate::after {
+    content: "\f06a";
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    color: #c80000;
+    font-size: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 8px;
+}
+
+.alert-validate:hover:before {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 992px) {
+    .alert-validate::before {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+
+
+/* ============================================== profile ============================================== */
+
+.profile {
+    height: 84vh;
+    background-color: white;
+    font-family: Montserrat, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card-container h3 {
+    margin: 10px 0;
+}
+
+.card-container h6 {
+    margin: 5px 0;
+    text-transform: uppercase;
+}
+
+.card-container p {
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.card-container {
+    background-color: #192440;
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+    color: #B3B8CD;
+    padding-top: 30px;
+    position: relative;
+    width: 350px;
+    max-width: 100%;
+    text-align: center;
+}
+
+    .card-container .pro {
+        color: #231E39;
+        background-color: #FEBB0B;
+        border-radius: 3px;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 3px 7px;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+    }
+
+    .card-container .round {
+        border: 1px solid #03BFCB;
+        border-radius: 50%;
+        padding: 7px;
+    }
+
+    .card-container img {
+        display: initial;
+    }
+
+
+
+/* ========================================================= jobs list ========================================================= */
+.jobslist .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+    background-color: #00FFAD;
+    border-radius: 25px;
+    color: black;
+    text-decoration: none;
+    color: black;
+}
+
+.jobslist{
+    margin:5rem 10rem;
+}
+
+.clientjoblist .btn{
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    width:150px;
+    background-color: #192440;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+}
+
+.jobslist .btnHover:hover {
+    background-color: white;
+    text-decoration:none;
+}
+    .create_new{
+    margin: 2rem 0;
+    color: white;
+    text-decoration: none;
+}
+    .create_new a{
+    text-decoration:none;
+    color:white;
+    }
+
+.jobslist .cardHover:hover {
+    background-color: #00FFAD;
+}
+
+/* ======================================== payment card ================================================*/

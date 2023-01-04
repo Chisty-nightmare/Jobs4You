@@ -1,0 +1,36 @@
+﻿@model Jobs4You.Models.Admin
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+@*<h2>Profile</h2>
+
+<div>
+    <h4>User_info</h4>
+    <hr />
+    <ul>
+        
+            <li> UserName : @HttpContext.Current.Session["user_username"] </li>
+            <li> State    : @HttpContext.Current.Session["user_stat"] </li>
+            <li> Phone    : @HttpContext.Current.Session["user_phone"] </li>
+            <li> Rating   : @HttpContext.Current.Session["user_rating"] </li>
+            <li> Name     : @HttpContext.Current.Session["user_name"] </li>
+            <li> Mail     : @HttpContext.Current.Session["user_mail"] </li>
+       
+
+    </ul>
+</div>
+<p>
+   
+</p>*@
+
+<section class="profile">
+    <div class="card-container">
+        <img class="round" src="~/Content/images/profile.png" alt="user" />
+        <h3>@HttpContext.Current.Session["user_username"] </h3>
+        <h6>@HttpContext.Current.Session["user_mail"]</h6>
+        <p>@HttpContext.Current.Session["user_username"]</p>
+        <br>
+    </div>
+</section>

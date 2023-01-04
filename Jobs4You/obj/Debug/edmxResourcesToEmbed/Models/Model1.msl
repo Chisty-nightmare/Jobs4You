@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Jobs4youModelStoreContainer" CdmEntityContainer="Jobs4youEntities1">
+    <EntitySetMapping Name="ApplyJobs">
+      <EntityTypeMapping TypeName="Jobs4youModel.ApplyJob">
+        <MappingFragment StoreEntitySet="ApplyJobs">
+          <ScalarProperty Name="applyToken" ColumnName="applyToken" />
+          <ScalarProperty Name="jobID" ColumnName="jobID" />
+          <ScalarProperty Name="freelancerID" ColumnName="freelancerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="Jobs4youModel.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="clientID" ColumnName="clientID" />
+          <ScalarProperty Name="client_username" ColumnName="client_username" />
+          <ScalarProperty Name="client_pass" ColumnName="client_pass" />
+          <ScalarProperty Name="client_phone" ColumnName="client_phone" />
+          <ScalarProperty Name="client_stat" ColumnName="client_stat" />
+          <ScalarProperty Name="client_rating" ColumnName="client_rating" />
+          <ScalarProperty Name="client_mail" ColumnName="client_mail" />
+          <ScalarProperty Name="client_name" ColumnName="client_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Freelancers">
+      <EntityTypeMapping TypeName="Jobs4youModel.Freelancer">
+        <MappingFragment StoreEntitySet="Freelancers">
+          <ScalarProperty Name="freelancerID" ColumnName="freelancerID" />
+          <ScalarProperty Name="freelancer_username" ColumnName="freelancer_username" />
+          <ScalarProperty Name="freelancer_pass" ColumnName="freelancer_pass" />
+          <ScalarProperty Name="freelancer_phone" ColumnName="freelancer_phone" />
+          <ScalarProperty Name="freelancer_stat" ColumnName="freelancer_stat" />
+          <ScalarProperty Name="freelancer_rating" ColumnName="freelancer_rating" />
+          <ScalarProperty Name="freelancer_mail" ColumnName="freelancer_mail" />
+          <ScalarProperty Name="freelancer_name" ColumnName="freelancer_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hires">
+      <EntityTypeMapping TypeName="Jobs4youModel.Hire">
+        <MappingFragment StoreEntitySet="Hires">
+          <ScalarProperty Name="HireID" ColumnName="HireID" />
+          <ScalarProperty Name="clientID" ColumnName="clientID" />
+          <ScalarProperty Name="freelancerID" ColumnName="freelancerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="Jobs4youModel.Invoice">
+        <MappingFragment StoreEntitySet="Invoice">
+          <ScalarProperty Name="invoiceID" ColumnName="invoiceID" />
+          <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+          <ScalarProperty Name="pricing" ColumnName="pricing" />
+          <ScalarProperty Name="details" ColumnName="details" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobs">
+      <EntityTypeMapping TypeName="Jobs4youModel.job">
+        <MappingFragment StoreEntitySet="jobs">
+          <ScalarProperty Name="jobID" ColumnName="jobID" />
+          <ScalarProperty Name="clientID" ColumnName="clientID" />
+          <ScalarProperty Name="pricing" ColumnName="pricing" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="Jobs4youModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+          <ScalarProperty Name="clientID" ColumnName="clientID" />
+          <ScalarProperty Name="jobID" ColumnName="jobID" />
+          <ScalarProperty Name="clientPayStat" ColumnName="clientPayStat" />
+          <ScalarProperty Name="freelancerID" ColumnName="freelancerID" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="frlncrReceiveStat" ColumnName="frlncrReceiveStat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Skills">
+      <EntityTypeMapping TypeName="Jobs4youModel.Skill">
+        <MappingFragment StoreEntitySet="Skills">
+          <ScalarProperty Name="skillID" ColumnName="skillID" />
+          <ScalarProperty Name="freelancerID" ColumnName="freelancerID" />
+          <ScalarProperty Name="skills" ColumnName="skills" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="Jobs4youModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="admin_mail" ColumnName="admin_mail" />
+          <ScalarProperty Name="admin_username" ColumnName="admin_username" />
+          <ScalarProperty Name="admin_pass" ColumnName="admin_pass" />
+          <ScalarProperty Name="adminID" ColumnName="adminID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ratings">
+      <EntityTypeMapping TypeName="Jobs4youModel.Rating">
+        <MappingFragment StoreEntitySet="Rating">
+          <ScalarProperty Name="freelancer_rating" ColumnName="freelancer_rating" />
+          <ScalarProperty Name="client_rating" ColumnName="client_rating" />
+          <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+          <ScalarProperty Name="ratingID" ColumnName="ratingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

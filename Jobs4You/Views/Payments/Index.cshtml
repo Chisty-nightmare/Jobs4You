@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Jobs4You.Models.Payment>
+
+@{
+    ViewBag.Title = "Your payments";
+}
+
+<h2>Pending Payments</h2>
+
+<p>
+    @Html.ActionLink("All payments", "index","Invoices")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.clientPayStat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.frlncrReceiveStat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.client_username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Freelancer.freelancer_username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.job.details)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.clientPayStat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.frlncrReceiveStat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.client_username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Freelancer.freelancer_username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.job.details)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.paymentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.paymentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.paymentID })
+        </td>
+    </tr>
+}
+
+</table>

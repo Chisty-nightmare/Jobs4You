@@ -1,0 +1,114 @@
+﻿@model Jobs4You.Models.TempClient
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@*<h2>Login</h2>*@
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @*<div class="form-horizontal">
+        <h4>Client</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.client_mail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.client_mail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.client_mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.client_pass, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.client_pass, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.client_pass, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+                <a href="@Url.Action("SignUp","Clients")" class="btn btn-default" role="button">Sign Up</a>
+            </div>
+        </div>
+    </div>*@
+
+
+
+
+    <section class="login">
+
+    <div class="limiter">
+        <div class="container-login100">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="wrap-login100">
+                <div class="login100-form-title">
+                    <span class="login100-form-title-1">
+                        Log In (client)
+                    </span>
+                </div>
+
+                <form class="login100-form validate-form">
+                    <br>
+
+                    @*@Html.LabelFor(model => model.client_mail, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                        @*<span class="label-input100">Username</span>*@
+                        @*<input class="input100" type="text" name="username" placeholder="Enter E-mail">*@
+                        @Html.EditorFor(model => model.client_mail, new { htmlAttributes = new { @class = " input100", placeholder = "Enter E-mail" } })
+                        @Html.ValidationMessageFor(model => model.client_mail, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    @*@Html.LabelFor(model => model.client_pass, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                        @*<span class="label-input100">Password</span>*@
+                        @*<input class="input100" type="password" name="pass" placeholder="Enter Password">*@
+                        @Html.EditorFor(model => model.client_pass, new { htmlAttributes = new { @class = " input100", placeholder = "Enter Password" } })
+                        @Html.ValidationMessageFor(model => model.client_pass, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    @*<div class="flex-sb-m w-full p-b-30">
+            <div class="contact100-form-checkbox">
+                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                <label class="label-checkbox100" for="ckb1">
+                    Remember me
+                </label>
+            </div>
+
+            <div>
+                <a href="#" class="txt1">
+                    Forgot Password?
+                </a>
+            </div>
+        </div>*@
+
+                    <div class="container-login100-form-btn">
+                            <input type="submit" value="Login" class="login100-form-btn"/>
+                        <button class="signup100-form-btn">
+                            <a href="@Url.Action("SignUp","Clients")" role="button">Sign Up</a>
+                        </button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+        </section>
+
+
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

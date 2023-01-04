@@ -1,0 +1,42 @@
+﻿@model Jobs4You.Models.Admin
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.admin_pass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admin_pass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.admin_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admin_username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.admin_mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admin_mail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.adminID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

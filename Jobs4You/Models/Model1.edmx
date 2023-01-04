@@ -1,0 +1,786 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Jobs4youModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="adminID" />
+          </Key>
+          <Property Name="adminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_pass" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="admin_username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="admin_mail" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ApplyJobs">
+          <Key>
+            <PropertyRef Name="applyToken" />
+          </Key>
+          <Property Name="applyToken" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="jobID" Type="int" Nullable="false" />
+          <Property Name="freelancerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="clientID" />
+          </Key>
+          <Property Name="clientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="client_username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_pass" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_phone" Type="varchar" MaxLength="50" />
+          <Property Name="client_stat" Type="int" />
+          <Property Name="client_rating" Type="float" />
+          <Property Name="client_mail" Type="varchar" MaxLength="50" />
+          <Property Name="client_name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Freelancers">
+          <Key>
+            <PropertyRef Name="freelancerID" />
+          </Key>
+          <Property Name="freelancerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="freelancer_username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="freelancer_pass" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="freelancer_phone" Type="varchar" MaxLength="50" />
+          <Property Name="freelancer_stat" Type="int" />
+          <Property Name="freelancer_rating" Type="float" />
+          <Property Name="freelancer_mail" Type="varchar" MaxLength="50" />
+          <Property Name="freelancer_name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hires">
+          <Key>
+            <PropertyRef Name="HireID" />
+          </Key>
+          <Property Name="HireID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientID" Type="int" />
+          <Property Name="freelancerID" Type="int" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="invoiceID" />
+          </Key>
+          <Property Name="invoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paymentID" Type="int" />
+          <Property Name="pricing" Type="float" Nullable="false" />
+          <Property Name="details" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="jobs">
+          <Key>
+            <PropertyRef Name="jobID" />
+          </Key>
+          <Property Name="jobID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientID" Type="int" />
+          <Property Name="pricing" Type="float" Nullable="false" />
+          <Property Name="details" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="duration" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="paymentID" />
+          </Key>
+          <Property Name="paymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientID" Type="int" />
+          <Property Name="jobID" Type="int" />
+          <Property Name="clientPayStat" Type="int" />
+          <Property Name="freelancerID" Type="int" />
+          <Property Name="amount" Type="float" Nullable="false" />
+          <Property Name="frlncrReceiveStat" Type="int" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="ratingID" />
+          </Key>
+          <Property Name="ratingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paymentID" Type="int" />
+          <Property Name="client_rating" Type="float" />
+          <Property Name="freelancer_rating" Type="float" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="skillID" />
+          </Key>
+          <Property Name="skillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="freelancerID" Type="int" Nullable="false" />
+          <Property Name="skills" Type="text" />
+        </EntityType>
+        <Association Name="FK__ApplyJobs__freel__30F848ED">
+          <End Role="Freelancers" Type="Self.Freelancers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplyJobs" Type="Self.ApplyJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Freelancers">
+              <PropertyRef Name="freelancerID" />
+            </Principal>
+            <Dependent Role="ApplyJobs">
+              <PropertyRef Name="freelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ApplyJobs__jobID__300424B4">
+          <End Role="jobs" Type="Self.jobs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplyJobs" Type="Self.ApplyJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobs">
+              <PropertyRef Name="jobID" />
+            </Principal>
+            <Dependent Role="ApplyJobs">
+              <PropertyRef Name="jobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hires__clientID__1920BF5C">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Hires" Type="Self.Hires" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="clientID" />
+            </Principal>
+            <Dependent Role="Hires">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hires__freelance__1A14E395">
+          <End Role="Freelancers" Type="Self.Freelancers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Hires" Type="Self.Hires" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Freelancers">
+              <PropertyRef Name="freelancerID" />
+            </Principal>
+            <Dependent Role="Hires">
+              <PropertyRef Name="freelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice__payment__21B6055D">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="paymentID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="paymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__jobs__clientID__1367E606">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="jobs" Type="Self.jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="clientID" />
+            </Principal>
+            <Dependent Role="jobs">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__clientI__1CF15040">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="clientID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__freelan__1ED998B2">
+          <End Role="Freelancers" Type="Self.Freelancers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Freelancers">
+              <PropertyRef Name="freelancerID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="freelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__jobID__1DE57479">
+          <End Role="jobs" Type="Self.jobs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobs">
+              <PropertyRef Name="jobID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="jobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rating__paymentI__398D8EEE">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="paymentID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="paymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Skills__freelanc__33D4B598">
+          <End Role="Freelancers" Type="Self.Freelancers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Skills" Type="Self.Skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Freelancers">
+              <PropertyRef Name="freelancerID" />
+            </Principal>
+            <Dependent Role="Skills">
+              <PropertyRef Name="freelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Jobs4youModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplyJobs" EntityType="Self.ApplyJobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Freelancers" EntityType="Self.Freelancers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hires" EntityType="Self.Hires" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ApplyJobs__freel__30F848ED" Association="Self.FK__ApplyJobs__freel__30F848ED">
+            <End Role="Freelancers" EntitySet="Freelancers" />
+            <End Role="ApplyJobs" EntitySet="ApplyJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ApplyJobs__jobID__300424B4" Association="Self.FK__ApplyJobs__jobID__300424B4">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="ApplyJobs" EntitySet="ApplyJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hires__clientID__1920BF5C" Association="Self.FK__Hires__clientID__1920BF5C">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Hires" EntitySet="Hires" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hires__freelance__1A14E395" Association="Self.FK__Hires__freelance__1A14E395">
+            <End Role="Freelancers" EntitySet="Freelancers" />
+            <End Role="Hires" EntitySet="Hires" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice__payment__21B6055D" Association="Self.FK__Invoice__payment__21B6055D">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__jobs__clientID__1367E606" Association="Self.FK__jobs__clientID__1367E606">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="jobs" EntitySet="jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__clientI__1CF15040" Association="Self.FK__Payment__clientI__1CF15040">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__freelan__1ED998B2" Association="Self.FK__Payment__freelan__1ED998B2">
+            <End Role="Freelancers" EntitySet="Freelancers" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__jobID__1DE57479" Association="Self.FK__Payment__jobID__1DE57479">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rating__paymentI__398D8EEE" Association="Self.FK__Rating__paymentI__398D8EEE">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Skills__freelanc__33D4B598" Association="Self.FK__Skills__freelanc__33D4B598">
+            <End Role="Freelancers" EntitySet="Freelancers" />
+            <End Role="Skills" EntitySet="Skills" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Jobs4youModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ApplyJob">
+          <Key>
+            <PropertyRef Name="applyToken" />
+          </Key>
+          <Property Name="applyToken" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="jobID" Type="Int32" Nullable="false" />
+          <Property Name="freelancerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Freelancer" Relationship="Self.FK__ApplyJobs__freel__30F848ED" FromRole="ApplyJobs" ToRole="Freelancers" />
+          <NavigationProperty Name="job" Relationship="Self.FK__ApplyJobs__jobID__300424B4" FromRole="ApplyJobs" ToRole="jobs" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="clientID" />
+          </Key>
+          <Property Name="clientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="client_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="client_stat" Type="Int32" />
+          <Property Name="client_rating" Type="Double" />
+          <Property Name="client_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="client_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Hires" Relationship="Self.FK__Hires__clientID__1920BF5C" FromRole="Clients" ToRole="Hires" />
+          <NavigationProperty Name="jobs" Relationship="Self.FK__jobs__clientID__1367E606" FromRole="Clients" ToRole="jobs" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__clientI__1CF15040" FromRole="Clients" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Freelancer">
+          <Key>
+            <PropertyRef Name="freelancerID" />
+          </Key>
+          <Property Name="freelancerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="freelancer_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="freelancer_pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="freelancer_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="freelancer_stat" Type="Int32" />
+          <Property Name="freelancer_rating" Type="Double" />
+          <Property Name="freelancer_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="freelancer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ApplyJobs" Relationship="Self.FK__ApplyJobs__freel__30F848ED" FromRole="Freelancers" ToRole="ApplyJobs" />
+          <NavigationProperty Name="Hires" Relationship="Self.FK__Hires__freelance__1A14E395" FromRole="Freelancers" ToRole="Hires" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__freelan__1ED998B2" FromRole="Freelancers" ToRole="Payment" />
+          <NavigationProperty Name="Skills" Relationship="Self.FK__Skills__freelanc__33D4B598" FromRole="Freelancers" ToRole="Skills" />
+        </EntityType>
+        <EntityType Name="Hire">
+          <Key>
+            <PropertyRef Name="HireID" />
+          </Key>
+          <Property Name="HireID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientID" Type="Int32" />
+          <Property Name="freelancerID" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Hires__clientID__1920BF5C" FromRole="Hires" ToRole="Clients" />
+          <NavigationProperty Name="Freelancer" Relationship="Self.FK__Hires__freelance__1A14E395" FromRole="Hires" ToRole="Freelancers" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="invoiceID" />
+          </Key>
+          <Property Name="invoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentID" Type="Int32" />
+          <Property Name="pricing" Type="Double" Nullable="false" />
+          <Property Name="details" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK__Invoice__payment__21B6055D" FromRole="Invoice" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="job">
+          <Key>
+            <PropertyRef Name="jobID" />
+          </Key>
+          <Property Name="jobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientID" Type="Int32" />
+          <Property Name="pricing" Type="Double" Nullable="false" />
+          <Property Name="details" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="duration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ApplyJobs" Relationship="Self.FK__ApplyJobs__jobID__300424B4" FromRole="jobs" ToRole="ApplyJobs" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__jobs__clientID__1367E606" FromRole="jobs" ToRole="Clients" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__jobID__1DE57479" FromRole="jobs" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="paymentID" />
+          </Key>
+          <Property Name="paymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientID" Type="Int32" />
+          <Property Name="jobID" Type="Int32" />
+          <Property Name="clientPayStat" Type="Int32" />
+          <Property Name="freelancerID" Type="Int32" />
+          <Property Name="amount" Type="Double" Nullable="false" />
+          <Property Name="frlncrReceiveStat" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Payment__clientI__1CF15040" FromRole="Payment" ToRole="Clients" />
+          <NavigationProperty Name="Freelancer" Relationship="Self.FK__Payment__freelan__1ED998B2" FromRole="Payment" ToRole="Freelancers" />
+          <NavigationProperty Name="Invoices" Relationship="Self.FK__Invoice__payment__21B6055D" FromRole="Payment" ToRole="Invoice" />
+          <NavigationProperty Name="job" Relationship="Self.FK__Payment__jobID__1DE57479" FromRole="Payment" ToRole="jobs" />
+          <NavigationProperty Name="Ratings" Relationship="Jobs4youModel.FK__Rating__paymentI__398D8EEE" FromRole="Payment" ToRole="Rating" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="skillID" />
+          </Key>
+          <Property Name="skillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="freelancerID" Type="Int32" Nullable="false" />
+          <Property Name="skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Freelancer" Relationship="Self.FK__Skills__freelanc__33D4B598" FromRole="Skills" ToRole="Freelancers" />
+        </EntityType>
+        <Association Name="FK__ApplyJobs__freel__30F848ED">
+          <End Role="Freelancers" Type="Self.Freelancer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplyJobs" Type="Self.ApplyJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Freelancers">
+              <PropertyRef Name="freelancerID" />
+            </Principal>
+            <Dependent Role="ApplyJobs">
+              <PropertyRef Name="freelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ApplyJobs__jobID__300424B4">
+          <End Role="jobs" Type="Self.job" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplyJobs" Type="Self.ApplyJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobs">
+              <PropertyRef Name="jobID" />
+            </Principal>
+            <Dependent Role="ApplyJobs">
+              <PropertyRef Name="jobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hires__clientID__1920BF5C">
+          <End Role="Clients" Type="Self.Client" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Hires" Type="Self.Hire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="clientID" />
+            </Principal>
+            <Dependent Role="Hires">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__jobs__clientID__1367E606">
+          <End Role="Clients" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="jobs" Type="Self.job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="clientID" />
+            </Principal>
+            <Dependent Role="jobs">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__clientI__1CF15040">
+          <End Role="Clients" Type="Self.Client" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="clientID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hires__freelance__1A14E395">
+          <End Role="Freelancers" Type="Self.Freelancer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Hires" Type="Self.Hire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Freelancers">
+              <PropertyRef Name="freelancerID" />
+            </Principal>
+            <Dependent Role="Hires">
+              <PropertyRef Name="freelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__freelan__1ED998B2">
+          <End Role="Freelancers" Type="Self.Freelancer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Freelancers">
+              <PropertyRef Name="freelancerID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="freelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Skills__freelanc__33D4B598">
+          <End Role="Freelancers" Type="Self.Freelancer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Skills" Type="Self.Skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Freelancers">
+              <PropertyRef Name="freelancerID" />
+            </Principal>
+            <Dependent Role="Skills">
+              <PropertyRef Name="freelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice__payment__21B6055D">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="paymentID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="paymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__jobID__1DE57479">
+          <End Role="jobs" Type="Self.job" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobs">
+              <PropertyRef Name="jobID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="jobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Jobs4youEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplyJobs" EntityType="Self.ApplyJob" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Freelancers" EntityType="Self.Freelancer" />
+          <EntitySet Name="Hires" EntityType="Self.Hire" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+          <EntitySet Name="jobs" EntityType="Self.job" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Skills" EntityType="Self.Skill" />
+          <AssociationSet Name="FK__ApplyJobs__freel__30F848ED" Association="Self.FK__ApplyJobs__freel__30F848ED">
+            <End Role="Freelancers" EntitySet="Freelancers" />
+            <End Role="ApplyJobs" EntitySet="ApplyJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ApplyJobs__jobID__300424B4" Association="Self.FK__ApplyJobs__jobID__300424B4">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="ApplyJobs" EntitySet="ApplyJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hires__clientID__1920BF5C" Association="Self.FK__Hires__clientID__1920BF5C">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Hires" EntitySet="Hires" />
+          </AssociationSet>
+          <AssociationSet Name="FK__jobs__clientID__1367E606" Association="Self.FK__jobs__clientID__1367E606">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="jobs" EntitySet="jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__clientI__1CF15040" Association="Self.FK__Payment__clientI__1CF15040">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hires__freelance__1A14E395" Association="Self.FK__Hires__freelance__1A14E395">
+            <End Role="Freelancers" EntitySet="Freelancers" />
+            <End Role="Hires" EntitySet="Hires" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__freelan__1ED998B2" Association="Self.FK__Payment__freelan__1ED998B2">
+            <End Role="Freelancers" EntitySet="Freelancers" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Skills__freelanc__33D4B598" Association="Self.FK__Skills__freelanc__33D4B598">
+            <End Role="Freelancers" EntitySet="Freelancers" />
+            <End Role="Skills" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice__payment__21B6055D" Association="Self.FK__Invoice__payment__21B6055D">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__jobID__1DE57479" Association="Self.FK__Payment__jobID__1DE57479">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <EntitySet Name="Admins" EntityType="Jobs4youModel.Admin" />
+          <EntitySet Name="Ratings" EntityType="Jobs4youModel.Rating" />
+          <AssociationSet Name="FK__Rating__paymentI__398D8EEE" Association="Jobs4youModel.FK__Rating__paymentI__398D8EEE">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="adminID" />
+          </Key>
+          <Property Name="adminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="admin_pass" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="admin_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="admin_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="ratingID" />
+          </Key>
+          <Property Name="ratingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentID" Type="Int32" />
+          <Property Name="client_rating" Type="Double" />
+          <Property Name="freelancer_rating" Type="Double" />
+          <NavigationProperty Name="Payment" Relationship="Jobs4youModel.FK__Rating__paymentI__398D8EEE" FromRole="Rating" ToRole="Payment" />
+        </EntityType>
+        <Association Name="FK__Rating__paymentI__398D8EEE">
+          <End Type="Jobs4youModel.Payment" Role="Payment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Jobs4youModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="paymentID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="paymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Jobs4youModelStoreContainer" CdmEntityContainer="Jobs4youEntities1">
+          <EntitySetMapping Name="ApplyJobs">
+            <EntityTypeMapping TypeName="Jobs4youModel.ApplyJob">
+              <MappingFragment StoreEntitySet="ApplyJobs">
+                <ScalarProperty Name="applyToken" ColumnName="applyToken" />
+                <ScalarProperty Name="jobID" ColumnName="jobID" />
+                <ScalarProperty Name="freelancerID" ColumnName="freelancerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="Jobs4youModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="clientID" ColumnName="clientID" />
+                <ScalarProperty Name="client_username" ColumnName="client_username" />
+                <ScalarProperty Name="client_pass" ColumnName="client_pass" />
+                <ScalarProperty Name="client_phone" ColumnName="client_phone" />
+                <ScalarProperty Name="client_stat" ColumnName="client_stat" />
+                <ScalarProperty Name="client_rating" ColumnName="client_rating" />
+                <ScalarProperty Name="client_mail" ColumnName="client_mail" />
+                <ScalarProperty Name="client_name" ColumnName="client_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Freelancers">
+            <EntityTypeMapping TypeName="Jobs4youModel.Freelancer">
+              <MappingFragment StoreEntitySet="Freelancers">
+                <ScalarProperty Name="freelancerID" ColumnName="freelancerID" />
+                <ScalarProperty Name="freelancer_username" ColumnName="freelancer_username" />
+                <ScalarProperty Name="freelancer_pass" ColumnName="freelancer_pass" />
+                <ScalarProperty Name="freelancer_phone" ColumnName="freelancer_phone" />
+                <ScalarProperty Name="freelancer_stat" ColumnName="freelancer_stat" />
+                <ScalarProperty Name="freelancer_rating" ColumnName="freelancer_rating" />
+                <ScalarProperty Name="freelancer_mail" ColumnName="freelancer_mail" />
+                <ScalarProperty Name="freelancer_name" ColumnName="freelancer_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hires">
+            <EntityTypeMapping TypeName="Jobs4youModel.Hire">
+              <MappingFragment StoreEntitySet="Hires">
+                <ScalarProperty Name="HireID" ColumnName="HireID" />
+                <ScalarProperty Name="clientID" ColumnName="clientID" />
+                <ScalarProperty Name="freelancerID" ColumnName="freelancerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="Jobs4youModel.Invoice">
+              <MappingFragment StoreEntitySet="Invoice">
+                <ScalarProperty Name="invoiceID" ColumnName="invoiceID" />
+                <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+                <ScalarProperty Name="pricing" ColumnName="pricing" />
+                <ScalarProperty Name="details" ColumnName="details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobs">
+            <EntityTypeMapping TypeName="Jobs4youModel.job">
+              <MappingFragment StoreEntitySet="jobs">
+                <ScalarProperty Name="jobID" ColumnName="jobID" />
+                <ScalarProperty Name="clientID" ColumnName="clientID" />
+                <ScalarProperty Name="pricing" ColumnName="pricing" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="Jobs4youModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+                <ScalarProperty Name="clientID" ColumnName="clientID" />
+                <ScalarProperty Name="jobID" ColumnName="jobID" />
+                <ScalarProperty Name="clientPayStat" ColumnName="clientPayStat" />
+                <ScalarProperty Name="freelancerID" ColumnName="freelancerID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="frlncrReceiveStat" ColumnName="frlncrReceiveStat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="Jobs4youModel.Skill">
+              <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="skillID" ColumnName="skillID" />
+                <ScalarProperty Name="freelancerID" ColumnName="freelancerID" />
+                <ScalarProperty Name="skills" ColumnName="skills" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="Jobs4youModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="admin_mail" ColumnName="admin_mail" />
+                <ScalarProperty Name="admin_username" ColumnName="admin_username" />
+                <ScalarProperty Name="admin_pass" ColumnName="admin_pass" />
+                <ScalarProperty Name="adminID" ColumnName="adminID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="Jobs4youModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="freelancer_rating" ColumnName="freelancer_rating" />
+                <ScalarProperty Name="client_rating" ColumnName="client_rating" />
+                <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+                <ScalarProperty Name="ratingID" ColumnName="ratingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

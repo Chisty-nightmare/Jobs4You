@@ -1,0 +1,42 @@
+﻿@model Jobs4You.Models.Invoice
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pricing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pricing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment.paymentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment.paymentID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.invoiceID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

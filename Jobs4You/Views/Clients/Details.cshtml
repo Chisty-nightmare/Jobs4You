@@ -1,0 +1,74 @@
+﻿@model Jobs4You.Models.Client
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.client_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.client_username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.client_pass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.client_pass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.client_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.client_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.client_stat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.client_stat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.client_rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.client_rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.client_mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.client_mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.client_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.client_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.clientID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

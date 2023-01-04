@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Jobs4You.Models.Freelancer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.freelancer_username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.freelancer_pass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.freelancer_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.freelancer_stat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.freelancer_rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.freelancer_mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.freelancer_name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.freelancer_username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.freelancer_pass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.freelancer_phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.freelancer_stat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.freelancer_rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.freelancer_mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.freelancer_name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.freelancerID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.freelancerID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.freelancerID })
+            </td>
+        </tr>
+    }
+
+</table>
